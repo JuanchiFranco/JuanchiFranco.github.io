@@ -131,6 +131,27 @@ em {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.project.coming-soon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #e0f7fa;
+}
+
+.project.coming-soon .project-img {
+    margin: 1rem auto;
+    object-fit: cover;
+}
+
+.project.coming-soon h3 {
+    color: #0077b6;
+}
+
+.project.coming-soon p {
+    color: #00b4d8;
+    font-style: italic;
+}
+
 /* Contact */
 .contact {
     background: #0077b6;
