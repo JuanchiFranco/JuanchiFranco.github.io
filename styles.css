@@ -95,13 +95,27 @@ em {
     text-align: center;
 }
 
+.projects h2 {
+    margin-bottom: 2rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
 .project {
     background: #e0f7fa;
-    margin: 1rem auto;
     padding: 1rem;
     border-radius: 8px;
     max-width: 600px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    width: 100%;
 }
 
 .project h3 {
@@ -132,4 +146,16 @@ em {
 
 .contact ul li {
     margin: 0.5rem 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 0.5rem;
+    }
+
+    .project {
+        margin: 0 auto;
+    }
 }
