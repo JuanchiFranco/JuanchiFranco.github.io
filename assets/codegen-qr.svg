@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="300" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="500" height="300" fill="#CAF0F8"/>
+    <!-- QR Code Pattern -->
+    <rect x="150" y="75" width="200" height="200" fill="#0077B6"/>
+    <rect x="170" y="95" width="40" height="40" fill="#E0F7FA"/>
+    <rect x="290" y="95" width="40" height="40" fill="#E0F7FA"/>
+    <rect x="170" y="215" width="40" height="40" fill="#E0F7FA"/>
+    <rect x="230" y="155" width="40" height="40" fill="#00B4D8"/>
+    <!-- Scan Line Animation -->
+    <line x1="150" y1="175" x2="350" y2="175" stroke="#00B4D8" stroke-width="2" stroke-dasharray="5,5"/>
+</svg>
