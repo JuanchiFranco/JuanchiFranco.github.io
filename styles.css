@@ -1,3 +1,33 @@
+/*=============================================
+  VARIABLES: LIGHT & DARK MODE PALETTE
+=============================================*/
+:root {
+    /* Light mode */
+    --color-bg: #f9f9f9;
+    --color-surface: #ffffff;
+    --color-text-primary: #333333;
+    --color-text-secondary: #555555;
+    --color-primary: #0077b6;
+    --color-secondary: #00b4d8;
+    --color-accent: #caf0f8;
+    --color-border: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    /* Dark mode refinado */
+    --color-bg: #0a0e12;
+    --color-surface: #1b232b;
+    --color-text-primary: #e8f1f5;
+    --color-text-secondary: #a8c2cc;
+    --color-primary: #0096c7;
+    --color-secondary: #00b4d8;
+    --color-accent: #1e3a49;
+    --color-border: rgba(173, 216, 230, 0.1);
+}
+
+/*=============================================
+    GLOBAL RESET & BASE
+=============================================*/
 * {
     margin: 0;
     padding: 0;
@@ -6,26 +36,33 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
     line-height: 1.6;
-    color: #333;
 }
 
 a {
     text-decoration: none;
-    color: #00b4d8;
+    color: var(--color-secondary);
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* HEADER */
+/*=============================================
+    HEADER & THEME TOGGLE
+=============================================*/
 header {
-    background: #0077b6;
+    background: var(--color-primary);
     color: #fff;
     padding: 1rem 0;
     text-align: center;
+    position: relative; /* for the toggle */
+}
+
+header h1 {
+    margin: 0;
 }
 
 header nav ul {
@@ -33,6 +70,7 @@ header nav ul {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 header nav ul li a {
@@ -40,10 +78,59 @@ header nav ul li a {
     font-weight: bold;
 }
 
-/* Home */
+/* Theme switch */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.theme-switch {
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    position: relative;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: var(--color-border);
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    bottom: 4px;
+    left: 4px;
+    transition: transform 0.4s;
+}
+
+.theme-switch input:checked + .slider {
+    background-color: var(--color-secondary);
+}
+
+.theme-switch input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/*=============================================
+    HOME SECTION
+=============================================*/
 .home {
-    background: #caf0f8;
-    color: #0077b6;
+    background: var(--color-accent);
+    color: var(--color-primary);
     text-align: center;
     padding: 4rem 1rem;
 }
@@ -61,64 +148,60 @@ header nav ul li a {
     font-size: 1.1rem;
     line-height: 1.8;
     padding: 0 1rem;
+    color: var(--color-text-secondary);
 }
 
-/* About */
+/*=============================================
+    ABOUT SECTION
+=============================================*/
 .about {
     text-align: center;
     padding: 2rem;
+    background: var(--color-surface);
 }
 
 .about-content {
-    max-width: 900px;       /* Ancho máximo del bloque */
-    margin: 2rem auto;      /* Centra el bloque en la pantalla */
+    max-width: 900px;
+    margin: 2rem auto;
     padding: 0 1rem;
-    overflow: hidden;       /* Contiene los floats */
+    overflow: hidden;
     text-align: left;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface);
+    padding-top: inherit;
+    padding-bottom: inherit;
+}
+
+.profile-img {
+    float: left;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--color-secondary);
+    margin: 0 1.5rem 1rem 0;
 }
 
 .about-content p {
     font-size: 1.1rem;
     line-height: 1.7;
+    color: var(--color-text-secondary);
     margin: 0;
 }
 
-.profile-img {
-    aspect-ratio: 1/1;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 0 1.5rem 1rem 0;
-    display: block;
-    border: 3px solid #00b4d8;
-    float: left;
-    object-fit: cover;
-}
-
-/* keywords */
-.highlight {
-    color: #0077b6; /* Azul oscuro (celeste) */
-    font-weight: bold;
-}
-  
-strong {
-    color: #00b4d8; /* Celeste brillante */
-    font-weight: bold;
-}
-  
-em {
-    color: #023e8a; /* Azul profundo */
-    font-style: italic;
-}
-
-/* Projects */
+/*=============================================
+    PROJECTS SECTION
+=============================================*/
 .projects {
     padding: 2rem;
     text-align: center;
+    background: var(--color-surface);
 }
 
 .projects h2 {
     margin-bottom: 2rem;
+    color: var(--color-primary);
 }
 
 .projects-grid {
@@ -131,94 +214,76 @@ em {
 }
 
 .project {
-    background: #e0f7fa;
+    background: var(--color-accent);
     padding: 1rem;
     border-radius: 8px;
-    max-width: 600px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    width: 100%;
-
+    box-shadow: 0 2px 4px var(--color-border);
     display: flex;
     flex-direction: column;
-}
-
-/* Encapsulamos la imagen */
-.project-img-wrapper {
     width: 100%;
-    height: 250px;           /* Altura fija */
-    overflow: hidden;        /* Oculta lo que sobresalga */
-    margin: 1rem 0;
-    display: flex;       /* Para centrar la img */
-}
-
-/* La imagen se adapta al contenedor */
-.project-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;     /* Muestra toda la imagen */
-    object-position: center; /* La centra en el wrapper */
-    display: block;
-    /* agregamos un borde */
-    border-radius: 8px;
-    border: 2px solid #00b4d8; /* Borde celeste */
 }
 
 .project h3 {
-    color: #0077b6;
+    color: var(--color-primary);
     margin: 0.5rem 0;
 }
 
-.project p {
-    flex-grow: 1;            /* Si quieres que el párrafo ocupe espacio flexible */
-    margin-bottom: 1rem;
+.project-img-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    margin: 1rem 0;
+    display: flex;
 }
-  
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid var(--color-secondary);
+}
+
+.project p {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    color: var(--color-text-secondary);
+}
+
 .project a {
-    text-decoration: none;
-    color: #0077b6;
+    color: var(--color-primary);
     font-weight: bold;
 }
 
+/* Coming soon variant */
 .project.coming-soon {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    background: #e0f7fa;
 }
 
 .project.coming-soon .project-img {
-    margin: 1rem auto;
     object-fit: cover;
 }
 
-.project.coming-soon h3 {
-    color: #0077b6;
-}
-
-.project.coming-soon p {
-    color: #00b4d8;
-    font-style: italic;
-}
-
-/* Contact */
+/*=============================================
+    CONTACT / FOOTER
+=============================================*/
 .contact {
-    background: #0077b6;
+    background: var(--color-primary);
     color: #fff;
     text-align: center;
     padding: 2rem;
 }
 
-.contact ul {
-    list-style: none;
-    padding: 0;
+.contact h2 {
+    margin-bottom: 1rem;
 }
 
-.contact ul li {
-    margin: 0.5rem 0;
+.contact p {
+    color: #fff;
 }
 
-/* Social Links */
 .social-links {
     display: flex;
     justify-content: center;
@@ -227,52 +292,117 @@ em {
 }
 
 .social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
 .social-icon i {
     font-size: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
 }
 
 .social-icon:hover {
     transform: translateY(-3px);
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.social-icon:hover i {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+/*=============================================
+    TYPOGRAPHY HIGHLIGHTS
+=============================================*/
+.highlight {
+    color: var(--color-secondary);
+    font-weight: bold;
 }
 
-/* Media Queries */
+strong {
+    color: var(--color-secondary);
+}
+
+em {
+    color: var(--color-primary);
+}
+
+/*=============================================
+    MEDIA QUERIES
+=============================================*/
+@media (max-width: 575.98px) {
+    .theme-switch-wrapper {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+    .theme-switch {
+        width: 40px;
+        height: 20px;
+    }
+    .slider:before {
+        width: 14px;
+        height: 14px;
+        bottom: 3px;
+        left: 3px;
+    }
+    .theme-switch input:checked + .slider:before {
+        transform: translateX(20px);
+    }
+}
+
 @media (max-width: 768px) {
+    .theme-switch-wrapper {
+        top: 1rem;
+        right: 1rem;
+    }
+    .theme-switch {
+        width: 44px;
+        height: 22px;
+    }
+    .slider:before {
+        width: 15px;
+        height: 15px;
+        bottom: 3.5px;
+        left: 3.5px;
+    }
+    .theme-switch input:checked + .slider:before {
+        transform: translateX(21px);
+    }
 
     .profile-img {
         float: none;
         display: block;
         margin: 0 auto 1rem;
     }
-    .about-content p {
+    .about-content p, .home p {
         text-align: center;
     }
-
     .projects-grid {
         grid-template-columns: 1fr;
         padding: 0 0.5rem;
     }
+}
 
-    .project {
-        margin: 0 auto;
+/* Pantallas grandes (> 992px): un poco más grande */
+@media (min-width: 992px) {
+    .theme-switch-wrapper {
+        top: 1.25rem;
+        right: 1.25rem;
+    }
+    .theme-switch {
+        width: 52px;
+        height: 26px;
+    }
+    .slider:before {
+        width: 17px;
+        height: 17px;
+        bottom: 4.5px;
+        left: 4.5px;
+    }
+    .theme-switch input:checked + .slider:before {
+        transform: translateX(26px);
     }
 }
