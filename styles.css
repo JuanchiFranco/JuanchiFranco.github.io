@@ -54,7 +54,13 @@ header nav ul li a {
 }
 
 .home p {
-    font-size: 1.2rem;
+    width: 95%;
+    max-width: 900px;
+    margin: 1.5rem auto;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    padding: 0 1rem;
 }
 
 /* About */
@@ -63,14 +69,30 @@ header nav ul li a {
     padding: 2rem;
 }
 
+.about-content {
+    max-width: 900px;       /* Ancho máximo del bloque */
+    margin: 2rem auto;      /* Centra el bloque en la pantalla */
+    padding: 0 1rem;
+    overflow: hidden;       /* Contiene los floats */
+    text-align: left;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
 .profile-img {
     aspect-ratio: 1/1;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin: 1rem auto;
+    margin: 0 1.5rem 1rem 0;
     display: block;
     border: 3px solid #00b4d8;
+    float: left;
+    object-fit: cover;
 }
 
 /* keywords */
@@ -235,6 +257,16 @@ em {
 
 /* Media Queries */
 @media (max-width: 768px) {
+
+    .profile-img {
+        float: none;
+        display: block;
+        margin: 0 auto 1rem;
+    }
+    .about-content p {
+        text-align: center;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
         padding: 0 0.5rem;
